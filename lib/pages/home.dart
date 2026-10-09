@@ -1,6 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import '../tweet.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -38,12 +38,20 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            Center(
-              child: Text('Pour vous', style: TextStyle(color: Colors.white)),
+            ListView.builder(
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text('Tweet no. #$index'),
+                    subtitle: Text('Contenu du tweet #$index'),
+                  ),
+                );
+              },
             ),
-            Center(
+            const Center(
               child: Text('Abonnements', style: TextStyle(color: Colors.white)),
             ),
           ],
